@@ -11,4 +11,4 @@ Blog: https://divertingpan.github.io/post/train_scanning/
 
 Add the adaptive movement detection
 
-Blog: 
+Blog: https://divertingpan.github.io/post/moving_detection/
