@@ -1,7 +1,13 @@
 # video_scanner
 Generate the scanning image from a video
 
-Run main.py
+![output preview](https://github.com/divertingPan/video_scanner/blob/main/img/1612974206140.png)
+
+![output preview](https://github.com/divertingPan/video_scanner/blob/main/img/1612974211721.png)
+
+![output preview](https://github.com/divertingPan/video_scanner/blob/main/img/1612974217162.png)
+
+Just run main.py within python envs
 
 ## v0.1:
 
