@@ -1,3 +1,7 @@
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+
+:star: A release on Windows and Ubuntu is updated: https://github.com/divertingPan/video_scanner/releases/tag/v0.3
+
 # video_scanner
 Generate the scanning image from a video
 
@@ -7,7 +11,9 @@ Generate the scanning image from a video
 
 ![output preview](https://github.com/divertingPan/video_scanner/blob/main/img/1612974217162.png)
 
-Just run main.py within python envs
+How to use the source code: run main.py within a python env
+
+How to use the release software: run the executable 'scan_ver_0.3' in the main folder
 
 ## v0.3:
 
