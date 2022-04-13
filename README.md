@@ -9,15 +9,22 @@ Generate the scanning image from a video
 
 Just run main.py within python envs
 
+## v0.3:
+
+The default save directory is the rootpath of the imported video.
+
+cv2.imwrite() is replaced by cv2.imencode() to support special characters in the save path. 
+
+## v0.2:
+
+Add the adaptive movement detection.
+
+Blog: https://divertingpan.github.io/post/moving_detection/
+
 ## v0.1:
 
 Blog: https://divertingpan.github.io/post/train_scanning/
 
-## v0.2:
-
-Add the adaptive movement detection
-
-Blog: https://divertingpan.github.io/post/moving_detection/
 
 ## Hardware Solution
 See repo: https://github.com/divertingPan/Line_Scan_Camera
