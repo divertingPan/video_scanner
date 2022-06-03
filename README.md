@@ -21,7 +21,7 @@ How to use the release software: run the executable 'scan_ver_0.3' in the main f
 
 2. cv2.imwrite() is replaced by cv2.imencode() to support special characters in the save path. 
 
-3. Add the hint of segment width under 'adaptive' mode to check the moving detection results. 
+3. Add the prompt of segment width under 'adaptive' mode to check the moving detection results. 
 
 ## v0.2:
 
