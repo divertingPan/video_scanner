@@ -444,10 +444,10 @@ class Application(tk.Frame):
             split_end = split_start + split_width
             if i == img.shape[1] // split_width:
                 split_end = img.shape[1]
-            cv2.imencode('.jpg', img[:, split_start:split_end, :])[1].tofile(
-                '{}/{}_{}.jpg'.format(save_dir,
-                                      os.path.split(self.video_path.get())[-1].split('.')[-2],
-                                      i))
+            cv2.imencode('.jpg',
+                         img[:, split_start:split_end, :],
+                         [int(cv2.IMWRITE_JPEG_QUALITY), 100])[1].tofile('{}/{}_{}.jpg'.format(save_dir,
+                                      os.path.split(self.video_path.get())[-1].split('.')[-2], i))
 
         self.label_status['text'] = 'Status: Done!'
         self.master.update()
