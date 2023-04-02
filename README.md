@@ -1,6 +1,6 @@
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
-:star: A release on Windows and Ubuntu is updated: https://github.com/divertingPan/video_scanner/releases/tag/v0.3
+:star: A release on Windows and Ubuntu is updated: https://github.com/divertingPan/video_scanner/releases
 
 # video_scanner
 Generate the scanning image from a video
