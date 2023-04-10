@@ -15,6 +15,10 @@ How to use the source code: run main.py within a python env
 
 How to use the release software: run the executable 'scan_ver_0.3' in the main folder
 
+## v0.3.4:
+
+The preview of the loaded video is optimized. Now the responding speed is faster when dragging the scrollbar.
+
 ## v0.3.3:
 
 ![main UI](https://github.com/divertingPan/video_scanner/blob/main/img/ver_0.3.3.png)
