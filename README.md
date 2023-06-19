@@ -26,6 +26,10 @@ The preview of the loaded video is optimized. Now the responding speed is faster
 
 1. Now the movement detection results can be edited. First to click the 'calculate move' button to get the movement information. Then click 'process'. Of course you can modify the movement information in the textbox. (The first number of position frame is always '0', representing the start frame of detection position.)
 
+For better understanding the parameters of splitting, referring to the following example.
+
+![parameters](https://github.com/divertingPan/video_scanner/blob/main/img/parameters.png)
+
 2. Add a 'stop' button to interrupt the process.
 
 3. update the save_img function, now it saves the jpeg file with 100% quality.
