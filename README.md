@@ -24,7 +24,7 @@ How to use the release software: run the executable 'scan_ver_0.3' in the main f
 
 The algorithm utilizes the first frame as an 'anchor' frame and detects keypoints. Subsequent frames are aligned to the keypoints detected in the first frame. 
 
-Note: the background of the moving object should not be too 'clean', and the background should not change too much during the video.
+Note: To achieve optimal results with the video stabilizer, the foreground and background of the moving object should not be too 'clean' (for providing enough keypoints to matching), and should not change too much during the video. To preview the stabilizer, mark the 'video stabilizer' option before loading the video. If you have already loaded a video, mark the option and reload the video. Additionally, if you wish to calculate the movement with the stabilizer, mark the option before clicking 'calculate move'. 
 
 Known problem: enabling the stabilizer significantly SLOWS DOWN the generation process.
 
