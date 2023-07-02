@@ -5,15 +5,28 @@
 # video_scanner
 Generate the scanning image from a video
 
-![output preview](https://github.com/divertingPan/video_scanner/blob/main/img/1612974206140.png)
+![output preview](img/1612974206140.png)
 
-![output preview](https://github.com/divertingPan/video_scanner/blob/main/img/1612974211721.png)
+![output preview](img/1612974211721.png)
 
-![output preview](https://github.com/divertingPan/video_scanner/blob/main/img/1612974217162.png)
+![output preview](img/1612974217162.png)
 
 How to use the source code: run main.py within a python env
 
 How to use the release software: run the executable 'scan_ver_0.3' in the main folder
+
+## v0.3.5:
+
+1. Fixed a bug where detection failed when adaptive sensitivity = 1.
+2. Added a video stabilizer to help smooth handheld shooting videos.
+
+![stabilizer](img/fig_stable.jpg)
+
+The algorithm utilizes the first frame as an 'anchor' frame and detects keypoints. Subsequent frames are aligned to the keypoints detected in the first frame. 
+
+Note: the background of the moving object should not be too 'clean', and the background should not change too much during the video.
+
+Known problem: enabling the stabilizer significantly SLOWS DOWN the generation process.
 
 ## v0.3.4:
 
@@ -21,14 +34,14 @@ The preview of the loaded video is optimized. Now the responding speed is faster
 
 ## v0.3.3:
 
-![main UI](https://github.com/divertingPan/video_scanner/blob/main/img/ver_0.3.3.png)
+![main UI](img/ver_0.3.3.png)
 
 
 1. Now the movement detection results can be edited. First to click the 'calculate move' button to get the movement information. Then click 'process'. Of course you can modify the movement information in the textbox. (The first number of position frame is always '0', representing the start frame of detection position.)
 
 For better understanding the parameters of splitting, referring to the following example.
 
-![parameters](https://github.com/divertingPan/video_scanner/blob/main/img/parameters.png)
+![parameters](img/parameters.png)
 
 2. Add a 'stop' button to interrupt the process.
 
