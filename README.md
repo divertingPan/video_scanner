@@ -5,6 +5,8 @@
 # video_scanner
 Generate the scanning image from a video
 
+![sample](img/1612934113750.png)
+
 ![output preview](img/1612974206140.png)
 
 ![output preview](img/1612974211721.png)
