@@ -1,3 +1,5 @@
-opencv_python==4.8.0.74
-numpy==1.25.0
-matplotlib==3.7.1
+opencv-python-headless>=4.8
+numpy>=1.24
+PySide6-Essentials>=6.5
+pyqtgraph>=0.13
+psutil>=5.9

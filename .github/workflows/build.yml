@@ -1,0 +1,117 @@
+name: Build Cross-Platform Binaries
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build (${{ matrix.label }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            label: Windows x64
+            artifact: VideoScanner-windows-x64
+          - os: ubuntu-22.04
+            label: Linux x64
+            artifact: VideoScanner-linux-x64
+          - os: macos-latest
+            label: macOS arm64
+            artifact: VideoScanner-macos-arm64
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Detect project directory
+        id: dirs
+        shell: bash
+        run: |
+          if [ -f "build_exe.spec" ]; then
+            echo "workdir=." >> "$GITHUB_OUTPUT"
+          elif [ -f "v040/build_exe.spec" ]; then
+            echo "workdir=v040" >> "$GITHUB_OUTPUT"
+          else
+            echo "ERROR: build_exe.spec not found in repo root or v040/" >&2
+            exit 1
+          fi
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r "${{ steps.dirs.outputs.workdir }}/requirements.txt"
+          pip install pyinstaller
+          if [ "${{ runner.os }}" = "macOS" ]; then
+            pip install pillow
+          fi
+
+      - name: Build with PyInstaller
+        shell: bash
+        working-directory: ${{ steps.dirs.outputs.workdir }}
+        run: |
+          pyinstaller --clean --noconfirm build_exe.spec
+
+      - name: Package Windows artifact
+        if: runner.os == 'Windows'
+        shell: pwsh
+        working-directory: ${{ steps.dirs.outputs.workdir }}
+        run: |
+          New-Item -ItemType Directory -Force -Path release_out | Out-Null
+          Compress-Archive -Path "dist\VideoScanner_v0.4.0.exe" -DestinationPath "release_out\${{ matrix.artifact }}.zip" -Force
+
+      - name: Package Linux artifact
+        if: runner.os == 'Linux'
+        shell: bash
+        working-directory: ${{ steps.dirs.outputs.workdir }}
+        run: |
+          mkdir -p release_out
+          chmod +x dist/VideoScanner_v0.4.0
+          tar -czf "release_out/${{ matrix.artifact }}.tar.gz" -C dist VideoScanner_v0.4.0
+
+      - name: Package macOS artifact
+        if: runner.os == 'macOS'
+        shell: bash
+        working-directory: ${{ steps.dirs.outputs.workdir }}
+        run: |
+          mkdir -p release_out
+          ditto -c -k --sequesterRsrc --keepParent "dist/VideoScanner_v0.4.0.app" "release_out/${{ matrix.artifact }}.zip"
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ steps.dirs.outputs.workdir }}/release_out/*
+          if-no-files-found: error
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true

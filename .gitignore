@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+
+# PyInstaller build outputs
+build/
+dist/
+release_out/
+
+# Local runtime config & temporary QA/benchmark folders
+config.ini
+_bench/
+_qa_tmp/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
