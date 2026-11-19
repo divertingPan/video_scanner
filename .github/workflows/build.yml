@@ -55,10 +55,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r "${{ steps.dirs.outputs.workdir }}/requirements.txt"
-          pip install pyinstaller
-          if [ "${{ runner.os }}" = "macOS" ]; then
-            pip install pillow
-          fi
+          pip install pyinstaller pillow
 
       - name: Build with PyInstaller
         shell: bash

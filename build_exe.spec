@@ -44,6 +44,7 @@ if IS_WIN and os.path.isfile(SPLASH_FILE):
         text_pos=(20, 460),
         text_size=10,
         text_color="#4a5568",
+        max_img_size=(800, 480),
         minify_script=True,
         always_on_top=True,
     )
